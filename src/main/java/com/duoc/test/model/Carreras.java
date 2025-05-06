@@ -8,28 +8,19 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Alumno")
+@Table(name = "Carreras")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Alumno {
+public class Carreras {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
-    @Column(nullable = false, unique = true, length = 50)
-    public String rut;
-
     @Column(nullable = false, length = 50)
-    public String nombres;
+    public String nombre_carrera;
 
-    @Column(nullable = false, length = 50)
-    public String apellidos;
-
-    @Column(nullable = false, length = 255)
-    public String correo;
-
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "carreras")
     public List<Matriculas> matriculas;
 }
