@@ -22,10 +22,10 @@ public class Alumno {
     public String rut;
 
     @Column(nullable = false, length = 50)
-    public String nombres;
+    public String nombre;
 
     @Column(nullable = false, length = 50)
-    public String apellidos;
+    public String apellido;
 
     @Column(nullable = false, length = 255)
     public String correo;
