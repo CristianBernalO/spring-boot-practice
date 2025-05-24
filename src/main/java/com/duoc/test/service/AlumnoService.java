@@ -19,6 +19,7 @@ public class AlumnoService {
         return alumnoRepository.findAll();
     };
 
+    //traer por id
     public Alumno findById(Integer id){
         return alumnoRepository.findById(id).orElse(null);
     }
@@ -28,11 +29,18 @@ public class AlumnoService {
         alumnoRepository.deleteById(id);
     }
 
+    //traer por correo
     public Alumno findByCorreo(String correo){
         return alumnoRepository.findByCorreo(correo);
     }
 
+    //traer por nombre
     public List<Alumno> findByNombre(String nombre){
         return alumnoRepository.findByNombre(nombre);
+    }
+
+    //guardando un alumno
+    public Alumno save(Alumno alumno){
+        return alumnoRepository.save(alumno);
     }
 }

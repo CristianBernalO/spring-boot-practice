@@ -15,7 +15,6 @@ public class AlumnoController {
 
     @GetMapping("/api/v1/bienvenida")
     public String bienvenidoAlumno(){
-
         return "Bienvenido a la página de Alumno";
     }
 
@@ -27,7 +26,6 @@ public class AlumnoController {
     @GetMapping("api/v1/alumno/{id}")
     public ResponseEntity<?> getAlumnoById(@PathVariable int id){
         Alumno alumno = alumnoService.findById(id);
-
         if(null == alumno){
             return ResponseEntity.status(404).body("Alumno no encontrado");
         }
@@ -46,13 +44,17 @@ public class AlumnoController {
 
     @GetMapping("api/v1/alumno/buscar?")
     public ResponseEntity<?> buscarAlumno(@RequestParam String correo){
-
         return ResponseEntity.status(200).body(alumnoService.findByCorreo(correo));
     }
 
     @GetMapping("api/v1/buscar/nombre")
     public ResponseEntity<?> buscarNombre(@RequestParam String nombre){
-
         return ResponseEntity.status(200).body(alumnoService.findByNombre(nombre));
     }
+
+    @PostMapping("api/v1/alumno")
+    public ResponseEntity<?> guardarAlumno(@RequestBody Alumno alumno){
+        return ResponseEntity.status(201).body(alumnoService.save(alumno));
+    }
+
 }
